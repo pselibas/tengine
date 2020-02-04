@@ -48,6 +48,7 @@ ENV CONFIG "\
     --with-mail \
     --with-mail_ssl_module \
     --with-threads \
+    --add-module=modules/ngx_http_upstream_dynamic_module \
     "
 
 RUN curl -o tengine-${TENGINE_VERSION}.tar.gz https://tengine.taobao.org/download/tengine-${TENGINE_VERSION}.tar.gz
