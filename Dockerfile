@@ -46,6 +46,7 @@ ENV CONFIG "\
     --with-stream \
     --with-stream_ssl_module \
     --with-mail \
+    --with-http_dyups_module \
     --with-mail_ssl_module \
     --with-threads \
     "
@@ -63,6 +64,9 @@ RUN \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN mkdir /var/lib/nginx/
+
+RUN addgroup --system --gid 101 nginx \
+    && adduser --system --disabled-login --ingroup nginx --no-create-home --home /nonexistent --gecos "nginx user" --shell /bin/false --uid 101 nginx 
 
 RUN rm -rf tengine-${TENGINE_VERSION}/ && rm tengine-${TENGINE_VERSION}.tar.gz
 RUN apt-get remove -y gcc make 
