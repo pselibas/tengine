@@ -62,11 +62,13 @@ RUN \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-#RUN rm -rf tengine-${TENGINE_VERSION}/ && rm tengine-${TENGINE_VERSION}.tar.gz
-#RUN apt-get remove -y gcc linux-headers make 
+RUN mkdir /var/lib/nginx/
+
+RUN rm -rf tengine-${TENGINE_VERSION}/ && rm tengine-${TENGINE_VERSION}.tar.gz
+RUN apt-get remove -y gcc make 
 
 EXPOSE 80 443
 
 STOPSIGNAL SIGTERM
 
-CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
+CMD ["/usr/share/nginx/sbin/nginx", "-g", "daemon off;"]
