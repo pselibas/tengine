@@ -46,7 +46,6 @@ ENV CONFIG "\
     --with-stream \
     --with-stream_ssl_module \
     --with-mail \
-    --with-http_dyups_module \
     --with-mail_ssl_module \
     --with-threads \
     "
